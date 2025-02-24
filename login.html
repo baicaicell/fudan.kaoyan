@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>成绩查询</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        background-color: white;
+        background: #fff;
+        width: 420px;
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+      .logo {
+        margin-bottom: 20px;
+        width: 220px;
+        height: 60px;
+        margin-top: 20px;
+      }
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #282828;
+        margin-bottom: 20px;
+      }
+      .input-group {
+        margin-bottom: 15px;
+        position: relative;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .captcha {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .captcha img {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 38px;
+        transform: translateY(2px);
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #0ae;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #0b61bc;
+      }
+      .footer {
+        font-size: 12px;
+        line-height: 20px;
+        color: #9291a4;
+        padding: 15px;
+        text-align: center;
+        margin-top: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .fo-item {
+        margin-right: 20px;
+      }
+      #exam-number {
+        padding-left: 80px;
+      }
+      #id-number {
+        padding-left: 80px;
+      }
+      .zkz {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+      }
+      #yzm {
+        padding-left: 65px;
+      }
+      .input-box {
+        background: #f5f8ff;
+        font-size: 12px;
+        color: #9291a4;
+        padding: 20px;
+        text-align: left;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="images/logo.png" alt="Logo" class="logo" />
+      <div class="title">2025年硕士研究生招生考试<br />初试成绩查询</div>
+      <div class="input-group">
+        <label for="exam-number" class="zkz">准考证号</label>
+        <input type="text" id="exam-number" placeholder="准考证号" />
+      </div>
+      <div class="input-group">
+        <label for="id-number" class="zkz">证件号码</label>
+        <input type="text" id="id-number" placeholder="有效居民身份证号码" />
+      </div>
+      <div class="input-box">
+        证件号码为有效居民身份证号码，居民身份证为18位数字（最后一位为X），港澳台身份证、护照按证件号码填写。
+      </div>
+      <div class="input-group captcha">
+        <label for="" class="zkz">验证码</label>
+        <input type="text" placeholder="输入验证码" id="yzm" />
+        <img src="images/yzm.png" alt="Captcha" />
+      </div>
+      <button onclick="validateForm()">查询</button>
+    </div>
+    <div class="footer">
+      <div class="fo-item">复旦大学研究生院</div>
+      <div class="fo-item">上海市杨浦区邯郸路220号第一教学楼</div>
+      <div class="fo-item">
+        电话：021-65643991 传真：021-65644159 邮箱：gs_admission@fudan.edu.cn
+      </div>
+    </div>
+    <script>
+        function validateForm() {
+          const examNumber = document.getElementById("exam-number").value;
+          const idNumber = document.getElementById("id-number").value;
+          const captcha = document.getElementById("yzm").value;
+  
+          if (!examNumber) {
+            alert("请输入准考证号");
+            return;
+          }
+  
+          if (examNumber !== "102465142401193") {
+            alert("准考证号错误");
+            return;
+          }
+  
+          if (!idNumber) {
+            alert("请输入证件号码");
+            return;
+          }
+  
+          if (idNumber !== "142602199308291510") {
+            alert("证件号码错误");
+            return;
+          }
+          if (!captcha ) {
+            alert("请输入验证码");
+            return;
+          }
+          console.log(captcha.toLowerCase() ,'captcha.toLowerCase() ');
+          
+          if (captcha.toLowerCase() !== "rj9t") {
+          alert("验证码错误");
+          return;
+        }
+  
+         window.location.href = "index.html";
+        }
+      </script>
+  </body>
+</html>
